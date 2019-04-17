@@ -1,0 +1,106 @@
+<ion-content>
+
+  <ion-item style="background-color: transparent" no-lines>
+
+    <ion-avatar id="jj" (click)="openImagePickerCrop()" no-lines>
+      <!-- <ion-text-avatar [ngStyle]="{'background-color':getRandomColor()}" *ngIf="isAvatar">{{ initials }}</ion-text-avatar> -->
+      <img [src]="imgurl">
+    </ion-avatar>
+  </ion-item>
+
+
+  <div style="border-radius:10px;" class="transparent" text-center>
+    <form (ngSubmit)="updateInfo()" [formGroup]="form">
+      <ion-item style="background-color: transparent" no-lines>
+
+        <ion-label style="color:#adaaaa;width:21%;font-size: 80%;">Email</ion-label>       
+        <ion-input style="color:#00b7ff;font-size: 110%;" type="text" disabled="true" value="{{ this.authProvider.getEmail() }}"></ion-input>
+
+      </ion-item>
+
+      <ion-item style="background-color: transparent" (click)="edit1()" no-lines>
+        <ion-label style="color:#adaaaa;width:21%;font-size: 80%;">Surname</ion-label>
+        <ion-input style="color:#00b7ff;font-size: 110%;"  type="text"  value="{{ lname }}" formControlName="sname"></ion-input>
+      </ion-item>
+      
+      <ion-item style="background-color: transparent" (click)="edit2()" no-lines>
+        <ion-label style="color:#adaaaa;width:21%;font-size: 80%;">Other Name</ion-label>
+        <ion-input style="color:#00b7ff;font-size: 110%;" type="text"  value="{{ fname }}" formControlName="oname"></ion-input>
+      </ion-item>
+      
+      <ion-item style="background-color: transparent" no-lines>
+        <ion-label style="color:#adaaaa;width:21%;font-size: 80%;">Gender</ion-label>
+        <ion-input style="text-transform: capitalize;color:#00b7ff;font-size: 110%;" type="text" disabled="true" value="{{ gender | titlecase }}"></ion-input>
+      </ion-item>
+
+
+
+      <ion-item  style="background-color: transparent" (click)="edit3()" no-lines>
+        <ion-label style="color:#adaaaa;width:21%;font-size: 80%;">Company</ion-label>
+        <ion-input style="color:#00b7ff;font-size: 110%;" type="text" value="{{ company }}" formControlName="company"></ion-input>
+      </ion-item>
+      
+
+      <ion-item   style="background-color: transparent" (click)="edit4()" no-lines>
+        <ion-label style="color:#adaaaa;width:21%;font-size: 80%;">Position</ion-label>
+        <ion-input style="color:#00b7ff;font-size: 110%;" type="text" value="{{ position }}" formControlName="position"></ion-input>
+      </ion-item>
+      
+
+      <ion-item  style="background-color: transparent" (click)="edit5()" no-lines>
+        <ion-label style="color:#adaaaa;width:21%;font-size: 80%;">Phone</ion-label>
+        <ion-input style="color:#00b7ff;font-size: 110%;" type="tel" value="{{ phone }}" formControlName="phone"></ion-input>
+      </ion-item>
+      
+
+      <!-- <ion-item style="background-color: transparent" (click)="edit6()" no-lines>
+        <ion-label style="color:#adaaaa;width:21%;">Facebook</ion-label>
+        <ion-input style="color:#00b7ff;font-size: 110%;" type="text" value="{{ fb }}" formControlName="facebook"></ion-input>
+      </ion-item>
+      
+
+      <ion-item  style="background-color: transparent" (click)="edit7()" no-lines>
+        <ion-label style="color:#adaaaa;width:21%;">Twitter</ion-label>
+        <ion-input style="color:#00b7ff;font-size: 110%;" type="text" value="{{ twitter }}" formControlName="twitter"></ion-input>
+      </ion-item>
+      
+
+      <ion-item style="background-color: transparent" (click)="edit8()" no-lines>
+        <ion-label style="color:#adaaaa;width:21%;">Linkedin</ion-label>
+        <ion-input style="color:#00b7ff;font-size: 110%;" type="text" value="{{ linkedin }}" formControlName="linkedin"></ion-input>
+      </ion-item> -->
+
+      
+      
+
+
+<!-- 
+        <ion-item  style="background-color: transparent;font-size: 150%;" no-lines>
+          <ion-icon style="margin-right:20px;" name="logo-twitter"></ion-icon>
+          <ion-icon   style="margin-right:20px;" name="logo-linkedin"></ion-icon>
+          <ion-icon (click)="addsocial()" style="margin-right:20px;" name="logo-facebook"></ion-icon>
+        </ion-item> -->
+        
+   
+
+<br>
+
+      
+
+      <div class="xxx">
+        <button style="padding:20px;" ion-button type="submit" color="success">
+          Update Info
+        </button>
+      </div>
+
+      
+    </form>
+    <div class="xxx">
+      <button style="padding:20px;" ion-button (click)="signOut()" color="danger">
+        Sign Out
+      </button>
+    </div>
+  </div>
+
+
+</ion-content>

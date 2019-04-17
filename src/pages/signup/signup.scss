@@ -1,0 +1,40 @@
+page-signup {
+    .logo img {
+        height: 150%;
+        // width:
+    }
+    #jj img {
+        height: 100px;
+        width: 100px;
+    }
+    #jj {
+        width: 40%;
+        margin-left: 35%;
+        // height: 100px;
+    }
+    .transparent {
+        // background-color: #00b7ff60;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+    ion-title {
+        margin-right: 20%;
+    }
+    ion-input::placeholder {
+        color: black;
+    }
+    ion-select::placeholder {
+        color: black;
+    }
+    ion-label {
+        color: black;
+    }
+}
+
+.item-md {
+    background-color: #40718500;
+}
+
+ion-input {
+    //border: 1px solid #00b7ff21;
+}

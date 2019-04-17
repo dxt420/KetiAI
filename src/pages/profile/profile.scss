@@ -1,0 +1,69 @@
+page-profile {
+    ion-title{
+        margin-right: 20%;
+    }
+
+
+    #jj img{
+        height: 100px;
+        width: 100px;
+      } 
+
+      #jj {
+        width: 40%;
+        margin-left:35%;
+        // height: 100px;
+      } 
+
+      .bg{
+        
+        background-size: cover;
+        background-repeat: no-repeat;
+      
+      }
+      .transparent{
+        // background-color: #0b6f96;
+        padding: 5px;
+    }
+
+    .item-md{
+      background-color: #049cd800;
+      color:white;
+    }
+      h3{
+        size: 150%;
+      }
+      #jj ion-text-avatar{
+        height: 120px;
+        width: 120px;
+        background-color: #00b7ff00;
+        font-size: 300%;
+      }
+
+      .item-md.item-block .item-inner{
+        border-bottom: 1px solid #00b7ff;
+
+      }
+
+    .xx{
+     width: 33%;
+     margin: 0 auto;
+    }
+
+    .xxx{
+      width: 50%;
+      margin: 0 auto;
+     }
+}
+.label-md {
+  margin: 13px 8px 6px 0;
+}
+
+
+.item-md.item-input.ng-valid.item-input-has-value:not(.input-has-focus):not(.item-input-has-focus) .item-inner, .item-md.item-input.ng-valid.input-has-value:not(.input-has-focus):not(.item-input-has-focus) .item-inner {
+   border-bottom-color: transparent; 
+  -webkit-box-shadow: inset 0 -1px 0 0 transparent; 
+   box-shadow: inset 0 -1px 0 0 transparent; 
+}
+
+

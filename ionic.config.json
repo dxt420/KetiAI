@@ -1,0 +1,14 @@
+{
+  "name": "Keti",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular",
+  "proxies": [
+    {
+      "path": "/tdata",
+      "proxyUrl": "www.ntflix.com"
+    }
+  ],
+  "id": "7aa3046e"
+}

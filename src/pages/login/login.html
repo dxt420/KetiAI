@@ -1,0 +1,46 @@
+
+
+
+<ion-content padding >
+
+
+  <ion-avatar id="jj">
+    <img [src]="'assets/img/logo.png'">
+
+  </ion-avatar>
+
+
+
+
+  <form (ngSubmit)="login()" [formGroup]="loginForm">
+		<ion-list inset>
+
+			<ion-item style="background-color: transparent">
+				<ion-input type="text" placeholder="Email" formControlName="email"></ion-input>
+			</ion-item>
+
+
+			<ion-item style="background-color: transparent">
+				<ion-input type="password" placeholder="Password" formControlName="password"></ion-input>
+			</ion-item>
+
+
+		</ion-list>
+
+		<div padding-horizontal>
+			<div text-center style="color:red;" class="form-error">{{loginError}}</div>
+
+			<button ion-button full type="submit" [disabled]="!loginForm.valid">Log in</button>
+
+
+			<ion-list>
+
+
+				<button ion-button icon-left block clear (click)="signup()">
+					<ion-icon name="person-add"></ion-icon>
+					Sign up
+				</button>
+			</ion-list>
+		</div>
+	</form>
+</ion-content>

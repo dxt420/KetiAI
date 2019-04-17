@@ -1,0 +1,28 @@
+<!-- <ion-tabs tabsPlacement="bottom" color="secondary">
+  <ion-tab [root]="tab1Root"  [tabTitle]="tab1Title" tabsHideOnSubPages="true" id="yy"></ion-tab>
+  <ion-tab [root]="tab2Root" [tabTitle]="tab2Title" ></ion-tab>
+  <ion-tab [root]="tab3Root" [tabTitle]="tab3Title" tabIcon="cog"></ion-tab>
+</ion-tabs> -->
+
+
+
+<ion-tabs [selectedIndex]="selectedIndex" tabsPlacement="bottom" color="primary" style="color:black" #myTabs>
+  <ion-tab [root]="tab1Root" tabTitle="Home" tabIcon="home"></ion-tab>
+  <ion-tab [root]="tab2Root" tabTitle="About" tabIcon="information-circle"></ion-tab>
+  <ion-tab [root]="tab3Root" tabTitle="SocialWall" tabIcon="logo-twitter"></ion-tab>
+  <!-- <ion-tab [root]="tab4Root" tabTitle="Notifications" tabIcon="notifications"></ion-tab> -->
+  <ion-tab [root]="tab4Root" tabTitle="Notifications" show="false" tabIcon="notifications" tabBadgeStyle="danger"></ion-tab>
+  <ion-tab [root]="tab5Root" tabTitle="Profile" tabIcon="person"></ion-tab>
+  <ion-tab [root]="tab6Root" show="false" tabTitle="Profile" tabIcon="person"></ion-tab>
+  <ion-tab [root]="tab7Root" show="false" tabTitle="Profile" tabIcon="person"></ion-tab>
+  <ion-tab [root]="tab8Root" show="false" tabTitle="Profile" tabIcon="person"></ion-tab>
+  <ion-tab [root]="tab9Root" show="false" tabTitle="Profile" tabIcon="person"></ion-tab>
+  <ion-tab [root]="tab10Root" show="false" tabTitle="Profile" tabIcon="person"></ion-tab>
+  <ion-tab [root]="tab11Root" show="false" tabTitle="Profile" tabIcon="person"></ion-tab>
+  <ion-tab [root]="tab12Root" show="false" tabTitle="Profile" tabIcon="person"></ion-tab>
+
+  
+</ion-tabs>
+
+
+

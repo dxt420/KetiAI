@@ -1,0 +1,29 @@
+{
+    "project_info": {
+        "project_number": "212359239652",
+        "firebase_url": "https://keti-1d31b.firebaseio.com",
+        "project_id": "keti-1d31b",
+        "storage_bucket": "keti-1d31b.appspot.com"
+    },
+    "client": [{
+        "client_info": {
+            "mobilesdk_app_id": "1:212359239652:android:f4095a97f21b70f4",
+            "android_client_info": {
+                "package_name": "com.ai.keti"
+            }
+        },
+        "oauth_client": [],
+        "api_key": [{
+            "current_key": "AIzaSyDNsPVRS9qmO_wGDGpYp1nsx2pcKqujwtI"
+        }],
+        "services": {
+            "appinvite_service": {
+                "other_platform_oauth_client": [{
+                    "client_id": "212359239652-tep4sr9aopn0fr75u9hut750etqmv7ca.apps.googleusercontent.com",
+                    "client_type": 3
+                }]
+            }
+        }
+    }],
+    "configuration_version": "1"
+}
