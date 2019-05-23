@@ -20,7 +20,12 @@ export class AuthProvider {
   constructor(public afAuth: AngularFireAuth, public db: AngularFireDatabase) {
     console.log('Hello AuthProvider Provider');
     afAuth.authState.subscribe(user => {
-      this.user = user;
+      if(user){
+        console.log(user)
+        this.user = user;
+
+      }
+
 
     });
   }

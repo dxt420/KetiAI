@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.ai.keti" version="1.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.ai.keti" version="1.0.4" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>Keti </name>
-    <description>A.I assistant for Cervical Cancer</description>
+    <description>A.I assistant for Reproductive Cancer</description>
     <author email="omonaderrick25@gmail.com" href="#">Derrick Omona</author>
     <content src="index.html" />
     <access origin="*" />
@@ -96,11 +96,9 @@
     </plugin>
     <plugin name="cordova-plugin-ionic-webview" spec="1.2.1" />
     <plugin name="cordova-plugin-advanced-http" spec="2.0.4" />
-    <plugin name="cordova-plugin-firebase" spec="2.0.5" />
     <plugin name="cordova-plugin-crop" spec="0.4.0" />
     <plugin name="cordova-plugin-file-transfer" spec="1.7.1" />
     <plugin name="cordova-plugin-file" spec="^6.0.1" />
     <engine name="browser" spec="5.0.4" />
     <engine name="ios" spec="4.5.5" />
-    <engine name="android" spec="7.1.4" />
 </widget>

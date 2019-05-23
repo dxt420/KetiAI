@@ -1,0 +1,56 @@
+<!--
+  Generated template for the SubscriptiondetailsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <ion-navbar>
+        <ion-title style="margin-right:40px;" text-center>Subscription</ion-title>
+      </ion-navbar>
+      <!-- <ion-segment [(ngModel)]="abc" class="dx"  >
+
+          <ion-segment-button  value="mm" class="d" >
+              Mobile Money
+          </ion-segment-button>
+          <ion-segment-button value="cc" class="d">
+              Credit Card
+          </ion-segment-button>
+
+
+
+      </ion-segment> -->
+
+</ion-header>
+
+
+<ion-content padding >
+
+     <ion-label text-center>Pay for 24 hours @ UGX 7000   <br> Please input phone number  </ion-label>
+      <br>
+
+
+
+      <form (ngSubmit)="payy()" [formGroup]="payForm">
+        <ion-list inset>
+
+          <ion-item style="background-color: transparent">
+            <ion-input type="tel" placeholder="Input Phone Number" formControlName="tele"></ion-input>
+          </ion-item>
+
+        </ion-list>
+
+        <div padding-horizontal>
+          <!-- <div text-center style="color:red;" class="form-error">{{loginError}}</div> -->
+
+          <button ion-button full type="submit" [disabled]="!payForm.valid">Pay</button>
+
+
+        </div>
+      </form>
+
+
+
+
+</ion-content>

@@ -1,25 +1,47 @@
 <ion-header>
       <ion-navbar>
-        <ion-title text-center>Keti</ion-title>
+      <button  ion-button menuToggle start>
+          <ion-icon style="background-color:rgba(red, green, blue, 0.1); font-size:30px;padding-left:0px;" name="menu"></ion-icon>
+        </button>
+        <ion-title  style="margin-right:40px;" text-center>Keti</ion-title>
       </ion-navbar>
     </ion-header>
 
     <ion-content padding>
         <div class="chats">
           <div class="chatbox">
-            <div *ngFor="let chat of chats">
+            <div *ngFor="let chat of chats; let i = index">
               <div class="message sent" *ngIf="chat.type!=='bot' && chat.isMe">
                 {{chat.message}}
                 <span class="metadata">
-                  <span class="time">{{chat.createdAt | date: 'HH:mm aaa'}}</span>
+                  <span style="font-size:90%;color:gray" class="time"><br>{{chat.createdAt | date: 'HH:mm aaa'}}</span>
                 </span>
               </div>
-              <div class="message received"  *ngIf="chat.type =='bot' && !chat.isMe">
+              <!-- <div class="message received"  *ngIf="chat.type =='bot' && !chat.isMe && (chats.length - i) <= 1">
                 {{chat.message}}
                 <span class="metadata">
-                  <span class="time">{{chat.createdAt | date: 'HH:mm aaa'}}</span>
+                  <span  style="font-size:90%;color:#b20909" class="time"><br>{{chat.createdAt | date: 'HH:mm aaa'}} </span>
                 </span>
               </div>
+              <div class="message received"  *ngIf="chat.type =='bot' && !chat.isMe && tt && (chats.length - i) == 1">
+                <img style="height: 20px; width:40px" [src]="'assets/img/gifs/typing.gif'">
+
+              </div> -->
+              <div class="message received"  *ngIf="chat.type =='bot' && !chat.isMe">
+                {{chat.message}}
+
+
+                <!-- <ion-icon (tap)="chat.message" style="font-size:30px;padding-left:0px;" name="menu"></ion-icon> -->
+
+
+                <!-- playText(chat.message) -->
+                <span class="metadata">
+                  <span  style="font-size:90%;color:#b20909" class="time"><br>{{chat.createdAt | date: 'HH:mm aaa'}}  <ion-icon (click)="playText(chat.message)" style="position:absolute;font-size:20px;right:15px;bottom:8px" name="play"  ></ion-icon></span>
+
+                </span>
+
+              </div>
+
             </div>
           </div>
           </div>
@@ -30,6 +52,9 @@
 
               <ion-input style="color:black" [(ngModel)]="message" name="message" class="input_message" placeholder="send message ..."></ion-input>
               <ion-icon (click)="sendMessage()" class="send" name="send"></ion-icon>
+              <ion-icon (click)="startVoice()" class="send" name="mic"></ion-icon>
+
+
             </div>
       </ion-footer>
     </ion-content>

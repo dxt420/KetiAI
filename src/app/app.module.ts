@@ -1,6 +1,3 @@
-import { ChoosePageModule } from './../pages/choose/choose.module';
-import { SpeakersPageModule } from './../pages/speakers/speakers.module';
-
 import { ErrorHandler, NgModule, enableProdMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { Camera } from '@ionic-native/camera';
@@ -31,7 +28,7 @@ import { FcmProvider } from '../providers/fcm/fcm';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { Firebase } from '@ionic-native/firebase';
 import { Crop } from '@ionic-native/crop';
-import { SpeakersPage } from '../pages/speakers/speakers';
+
 import { IntroPage } from '../pages/intro/intro';
 import { IntroPageModule } from '../pages/intro/intro.module';
 import { HomePageModule } from '../pages/home/home.module';
@@ -39,20 +36,37 @@ import { HomePage } from '../pages/home/home';
 import { PusherServiceProvider } from '../providers/pusher-service/pusher-service';
 import { ChatServiceProvider } from '../providers/chat-service/chat-service';
 
-// import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
+import { SpeechRecognition } from '@ionic-native/speech-recognition';
+
+import { AngularRaveModule } from 'angular-rave';
+import { RaveModule, Rave, Misc, RavePayment } from 'rave-ionic3';
 
 
+
+import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
+
+import { TextToSpeech } from '@ionic-native/text-to-speech';
+import { SubscriptionProvider } from '../providers/subscription/subscription';
+import { HttpModule } from '@angular/http';
+
+
+// export const firebaseConfig = {
+//   apiKey: "AIzaSyCgG3bsOrdH5yjMr0GW6O0wGNn461bYsqY",
+//     authDomain: "keti-1d31b.firebaseapp.com",
+//     databaseURL: "https://keti-1d31b.firebaseio.com",
+//     projectId: "keti-1d31b",
+//     storageBucket: "keti-1d31b.appspot.com",
+//     messagingSenderId: "212359239652"
+
+// };
 
 export const firebaseConfig = {
-  apiKey: "AIzaSyCgG3bsOrdH5yjMr0GW6O0wGNn461bYsqY",
-    authDomain: "keti-1d31b.firebaseapp.com",
-    databaseURL: "https://keti-1d31b.firebaseio.com",
-    projectId: "keti-1d31b",
-    storageBucket: "keti-1d31b.appspot.com",
-    messagingSenderId: "212359239652"
-
-
-
+  apiKey: "AIzaSyBbcT4BZ8tiDWsrbV16eFgo_z17bqBsOBs",
+  authDomain: "chanjia-e9ddb.firebaseapp.com",
+  databaseURL: "https://chanjia-e9ddb.firebaseio.com",
+  projectId: "chanjia-e9ddb",
+  storageBucket: "chanjia-e9ddb.appspot.com",
+  messagingSenderId: "885878744432"
 
 };
 
@@ -78,13 +92,14 @@ firebase.initializeApp(firebaseConfig);
     AngularFireAuthModule,
     TabsPageModule,
     LoginPageModule,
-    SpeakersPageModule,
-    ChoosePageModule,
     IntroPageModule,
     HomePageModule,
     NgxErrorsModule ,
     HttpClientModule,
     AngularFirestoreModule,
+    AngularRaveModule,
+    RaveModule,
+    HttpModule
 
 
     // SearchPipe.forRoot()
@@ -95,7 +110,6 @@ firebase.initializeApp(firebaseConfig);
     MyApp,
     TabsPage,
     LoginPage,
-    SpeakersPage,
     SignupPage,
     IntroPage,
     HomePage
@@ -111,13 +125,20 @@ firebase.initializeApp(firebaseConfig);
     AuthProvider,
     AngularFireAuth,
     ImagePicker,
-
+    SpeechRecognition,
     FcmProvider,
     Firebase,
     Crop,
     PusherServiceProvider,
     ChatServiceProvider,
-    
+    Rave,
+    InAppBrowser,
+    Misc,
+    RavePayment,
+    TextToSpeech,
+    // SubscriptionProvider
+
+
     // FCM
 
   ]

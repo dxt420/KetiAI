@@ -203,7 +203,7 @@ export class ProfilePage {
     this.isEditable7 = false;
     this.isEditable8 = false;
 
-    
+
     this.ionViewDidLoad();
 
     let toast = this.toastCtrl.create({

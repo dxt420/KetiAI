@@ -6,8 +6,8 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { TabsPage } from '../tabs/tabs';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { SignupPage } from '../signup/signup';
-import { AboutPage } from '../about/about';
-import { SpeakersPage } from '../speakers/speakers';
+import { HomePage } from '../home/home';
+
 
 /**
  * Generated class for the LoginPage page.
@@ -56,7 +56,7 @@ login() {
   };
   this.auth.signInWithEmail(credentials)
     .then(
-      () => this.navCtrl.setRoot(SpeakersPage),
+      () => this.navCtrl.setRoot(HomePage),
       // error => this.loginError = error.message
       error => this.loginError = "Oops! Your email or password is incorrect, also check that you are connected to the internet, if you are a new user please sign up below"
     );

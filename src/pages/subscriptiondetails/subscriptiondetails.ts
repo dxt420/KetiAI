@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
-import { AuthProvider } from '../../providers/auth/auth';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Rave, RavePayment, Misc } from 'rave-ionic3';
 import { InAppBrowser, InAppBrowserEvent, InAppBrowserObject } from '@ionic-native/in-app-browser/ngx'
+import { AuthProvider } from '../../providers/auth/auth';
 
 /**
- * Generated class for the SubscriptionPage page.
+ * Generated class for the SubscriptiondetailsPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -13,61 +14,53 @@ import { InAppBrowser, InAppBrowserEvent, InAppBrowserObject } from '@ionic-nati
 
 @IonicPage()
 @Component({
-  selector: 'page-subscription',
-  templateUrl: 'subscription.html',
+  selector: 'page-subscriptiondetails',
+  templateUrl: 'subscriptiondetails.html',
 })
-export class SubscriptionPage {
+export class SubscriptiondetailsPage {
 
-  oneDay: string = "1 day";
-  oneDayPrice: string = "1000";
-
-
-  sevenDay: string = "7 days";
-  sevenDayPrice: string = "7000";
+  payForm: FormGroup;
 
 
-  thirtyDay: string = "30 days";
-  thirtyDayPrice: string = "30000";
+  price: any;
+  period: any;
 
+  abc: string = "feed";
+
+  pages: string = "pageA";
   email: any;
 
-  constructor(public alertCtrl:AlertController,public navCtrl: NavController, public navParams: NavParams,public authProvider: AuthProvider,private rave: Rave,
+
+  constructor(public alertCtrl:AlertController,public navCtrl: NavController,fb: FormBuilder, public navParams: NavParams,public authProvider: AuthProvider,private rave: Rave,
     private ravePayment: RavePayment,
     private misc: Misc,
     private iab: InAppBrowser) {
 
+
     this.email = this.authProvider.getEmail();
+    //this.price = navParams.get('price');
+    //this.period = navParams.get('period');
 
-
-
+    this.payForm = fb.group({
+			tele: ['', Validators.compose([Validators.required])]
+		});
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad SubscriptionPage');
-  }
+  payy(){
 
-  openPage(b,c) {
-    // Reset the content nav to have just this page
-    // we wouldn't want the back button to show in this scenario
-    // this.nav.setRoot(a.component);
+    let data = this.payForm.value;
 
-    // this.navCtrl.push('SubscriptiondetailsPage',{
-    //   "period" : b,
-    //   "price" : c
-    // });
+    let info = {
+      tele: data.tele
+    };
 
-  }
-
-
-
-  pay(amount){
-    this.rave.init(true, "FLWPUBK-4e734ea929fdf67fbe0c904c9ff3952e-X")
+    this.rave.init(true, "FLWPUBK-409ee387c7d46b6e442b3dafdee7432b-X")
       .then(_ => {
         var paymentObject = this.ravePayment.create({
           customer_email: this.email,
-          amount: 2,
-          customer_phone: "+256770563420",
-          currency: "USD",
+          amount: 7000,
+          customer_phone: data.tele,
+          currency: "UGX",
           txref: "Keti-" + new Date(),
           meta: [{
               metaname: "Keti",
@@ -103,7 +96,19 @@ export class SubscriptionPage {
       })
 }
 
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad SubscriptiondetailsPage');
+  }
 
-
+  swipeEvent($e) {
+    console.log($e.deltaX+", "+$e.deltaY);
+    if($e.deltaX > 0){
+      console.log("Swipe from Lefty to Righty");
+      this.pages = "pageB";
+    }else{
+      console.log("Swipe from Right to Left");
+      this.pages = "pageA";
+    }
+}
 
 }

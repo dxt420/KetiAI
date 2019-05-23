@@ -1,4 +1,4 @@
-import { SpeakersPage } from './../pages/speakers/speakers';
+
 import { Component, ViewChild } from '@angular/core';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
@@ -10,8 +10,12 @@ import { AuthProvider } from '../providers/auth/auth';
 import { FcmProvider } from '../providers/fcm/fcm';
 import { tap } from 'rxjs/operators';
 import { IntroPage } from '../pages/intro/intro';
-import { ChoosePage } from '../pages/choose/choose';
+
 import { HomePage } from '../pages/home/home';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Http,Headers,RequestOptions } from '@angular/http'
+import firebase from 'firebase';
+// import { HTTP } from '@ionic-native/http/ngx';
 
 
 
@@ -20,7 +24,13 @@ import { HomePage } from '../pages/home/home';
   template: `<ion-menu [content]="content">
     <ion-header>
       <ion-toolbar>
-        <ion-title>Guide</ion-title>
+        <ion-title  text-center>
+
+        <img style="height: 40px;" [src]="'assets/img/logo.png'">
+
+
+
+      </ion-title>
         <ion-buttons end>
         <button style="color:white" menuClose ion-button >
                 <ion-icon  name="close"></ion-icon>
@@ -33,7 +43,7 @@ import { HomePage } from '../pages/home/home';
     </ion-header>
 
     <ion-content>
-      <ion-list no-lines style="padding-top:20px; ">
+      <ion-list no-lines >
 
         <ion-item style="background-color: rgba(0, 0, 0, 0);" *ngFor="let p of pages" menuClose (click)="openPage(p)">
           <ion-icon [name]="p.icon" item-left></ion-icon>
@@ -44,6 +54,17 @@ import { HomePage } from '../pages/home/home';
 
 
       </ion-list>
+
+
+      <button  menuClose ion-button  round block medium (click)="signOut()" style="Width:50%;margin-left:25%;background-color: red; margin-top:60vh">
+
+				Sign Out
+				</button>
+
+
+
+
+
 
 
 
@@ -61,11 +82,16 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
 
-  constructor(public platform: Platform, private statusBar: StatusBar,public fcm: FcmProvider,public toastCtrl: ToastController, private splashScreen: SplashScreen, private auth: AuthProvider,public alertCtrl:AlertController) {
+  constructor(public http: HttpClient, public platform: Platform, private statusBar: StatusBar, public fcm: FcmProvider, public toastCtrl: ToastController, private splashScreen: SplashScreen, private auth: AuthProvider, public alertCtrl: AlertController) {
 
     this.initializeApp();
 
     this.pages = [
+
+      { title: 'Subscription', component: 'SubscriptiondetailsPage', icon: "cash" },
+      { title: 'Guidelines', component: 'GuidelinesPage', icon: "list" },
+      { title: 'About', component: 'AboutPage', icon: "information" },
+
 
     ]
 
@@ -82,72 +108,129 @@ export class MyApp {
       }, 300);
     });
 
+    // this.auth.getUserCompany()
+    // .then(fname => {
+    //   console.log(fname)
+    // })
+    // .catch(error => {
+    //   console.log('OOPS, error', error)
+    // })
+
     this.auth.afAuth.authState
       .subscribe(
         user => {
           if (user && user.emailVerified) {
+
+
+              console.log(user.emailVerified)
+              firebase.auth().currentUser.getIdToken()
+              .then(authToken => {
+
+
+
+                var headerDict = {
+                  'Content-Type': 'application/json',
+                  'Access-Control-Allow-Headers': 'Content-Type',
+                  'Access-Control-Allow-Origin':'*',
+                  'Access-Control-Allow-Methods': 'POST, GET, OPTIONS, PUT',
+                  'Authorization': 'Bearer ' + authToken
+                };
+
+                var requestOptions = {
+                  headers: new HttpHeaders(headerDict)
+                };
+
+                console.log(authToken)
+
+
+
+                return this.http.post('https://keti-server-v2.herokuapp.com/getUser',{}, requestOptions).toPromise()
+
+
+              })
+              .catch(error => {
+                console.log('OOPS, error', error)
+              })
+
             this.rootPage = HomePage;
           } else if (user && !user.emailVerified) {
             alert('Please verify your email address to gain access');
             this.rootPage = LoginPage;
-          }else{
+            console.log("Like For Verify")
+          } else {
             this.rootPage = IntroPage;
+            console.log("Like For Intro")
           }
         },
         () => {
           this.rootPage = LoginPage;
+          console.log("Like For XXX")
         }
       );
 
-       // Get a FCM token
-       this.fcm.firebaseNative.getToken().then(token=>{
-        console.log(token);
+    // Get a FCM token
+    this.fcm.firebaseNative.getToken().then(token => {
+      console.log(token);
     })
 
 
 
+
+
+
     this.fcm.firebaseNative.subscribe('all');
-      // Listen to incoming messages
-      this.fcm.listenToNotifications().pipe(
-        tap(msg => {
-          // show a toast
-          let messageText: string;
-          if (this.platform.is('android')) {
-            messageText = msg.body;
+    // Listen to incoming messages
+    this.fcm.listenToNotifications().pipe(
+      tap(msg => {
+        // show a toast
+        let messageText: string;
+        if (this.platform.is('android')) {
+          messageText = msg.body;
 
-          }
+        }
 
-          if (this.platform.is('ios')) {
-            messageText = msg.aps.alert;
-          }
+        if (this.platform.is('ios')) {
+          messageText = msg.aps.alert;
+        }
 
-          let alert = this.alertCtrl.create({
-                    title: msg.title,
-                    message: messageText,
-                    buttons: [
-                      {
-                        text: 'Done',
-                        role: 'cancel'
-                      }
-                    ]
-                  });
+        let alert = this.alertCtrl.create({
+          title: msg.title,
+          message: messageText,
+          buttons: [
+            {
+              text: 'Done',
+              role: 'cancel'
+            }
+          ]
+        });
 
-                  alert.present();
-          // const toast = this.toastCtrl.create({
-          //   message: messageText,
-          //   duration: 3000
-          // });
-          // toast.present();
-        })
-      )
-        .subscribe()
-
-
+        alert.present();
+        // const toast = this.toastCtrl.create({
+        //   message: messageText,
+        //   duration: 3000
+        // });
+        // toast.present();
+      })
+    )
+      .subscribe()
 
 
-    this.fcm.firebaseNative.onTokenRefresh().subscribe(token=>{
+
+
+    this.fcm.firebaseNative.onTokenRefresh().subscribe(token => {
       console.log(token);
     });
+
+
+
+
+
+
+
+
+
+
+
   }
 
 
@@ -161,6 +244,10 @@ export class MyApp {
 
     this.nav.push(a.component.toString());
 
+  }
+
+  signOut() {
+    this.auth.signOut();
   }
 
 

@@ -21,6 +21,13 @@
     color:white;
 }
 
+.toolbar-background{
+  // background-color:#00b7ff5a;
+  background-image: linear-gradient(to bottom, #049cd86e 0%, #76c7f0f8 100%);
+  color:white;
+}
+
+
 .tabs-md-secondary .tab-button:hover:not(.disable-hover),
 .tabs-md-secondary .tab-button[aria-selected=true],
 .tabs-md-secondary .tab-button[aria-selected=true] .tab-button-icon {
