@@ -1,7 +1,7 @@
 {
     "name": "Keti",
     "version": "0.0.1",
-    "author": "Chil",
+    "author": "CHIL A.I Lab",
     "homepage": "https://www.cdarh.org",
     "private": true,
     "scripts": {
@@ -40,6 +40,7 @@
         "@ionic/storage": "^2.2.0",
         "@ngx-translate/core": "8.0.0",
         "@ngx-translate/http-loader": "^2.0.0",
+        "@types/lodash": "^4.14.118",
         "@ultimate/ngxerrors": "^1.4.0",
         "actions-on-google": "^2.7.0",
         "angular-rave": "^1.2.1",
