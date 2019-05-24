@@ -194,7 +194,7 @@ app.post('/message', async (req, res) => {
     pusher.trigger('chat-bot', 'chat', {
 
       message: `${response.data.result.fulfillment.speech}`,
-      extra: `${response.data.result.fulfillment.messages}`,
+      extra: `${response.data.result.fulfillment.messages[0]}`,
       type: 'bot',
       kind: 'ONE',
       createdAt: new Date().toISOString(),
