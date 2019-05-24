@@ -51,6 +51,7 @@ export class HomePage {
         data.isMe = true;
       };
       this.chats.push(data);
+      console.log(this.chats);
     });
   }
 

@@ -168,7 +168,7 @@ app.post('/getUser', (req, res) => {
 
 app.post('/message', async (req, res) => {
   // simulate actual db save with id and createdAt added
-  console.log(req.body);
+  console.log(req);
   const chat = {
     ...req.body,
     id: shortId.generate(),
@@ -179,9 +179,14 @@ app.post('/message', async (req, res) => {
 
   const message = chat.message;
 
-    const response = await dialogFlow.send(message);
+  const response = await dialogFlow.send(message);
+  console.log(response.data);
+  console.log(response.data.result);
+
+
     // trigger this update to our pushers listeners
     pusher.trigger('chat-bot', 'chat', {
+
       message: `${response.data.result.fulfillment.speech}`,
       type: 'bot',
       createdAt: new Date().toISOString(),
