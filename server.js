@@ -4,6 +4,7 @@ const Pusher = require('pusher')
 const cors = require('cors')
 const firebase = require('firebase')
 const admin = require('firebase-admin')
+const functions = require('firebase-functions')
 
 require('dotenv').config()
 
