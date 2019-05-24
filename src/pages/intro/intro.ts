@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { SignupPage } from '../signup/signup';
 
 /**
  * Generated class for the IntroPage page.
@@ -22,8 +23,13 @@ export class IntroPage {
     console.log('ionViewDidLoad IntroPage');
   }
 
-  goToHome(){
-    this.navCtrl.setRoot('LoginPage');
+
+
+  login(){
+    this.navCtrl.push('LoginPage');
   }
-  
+  signup(){
+    this.navCtrl.push(SignupPage);
+  }
+
 }

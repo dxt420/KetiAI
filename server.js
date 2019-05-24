@@ -69,6 +69,9 @@ admin.initializeApp(firebaseConfig)
 exports.dialogflowFirebaseFulfillment = functions.https.onRequest(app);
 
 
+var uid
+
+
 
 
 
@@ -105,13 +108,37 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
   console.log('Dialogflow Request body: ' + JSON.stringify(request.body));
 
 
-  function welcome(agent) {
-    agent.add(`Hi! My name is Keti and i'll be your electronic oncology consultant.`);
+  // function welcome(agent) {
+  //   agent.add(`Hi! My name is Keti and i'll be your electronic oncology consultant.`);
+  // }
+
+   function refer(agent) {
+
+
+    return admin.database().ref('users').once("value").then((snapshot) => {
+      var lastName = snapshot.child(uid).child("firstName").val();
+      // agent.add(`Thats great to hear. Anyways, how can i help you today ` + lastName);
+      agent.add(lastName, +`with all the information we have shared together, I would recommend you to carry out a cervical cancer test with the help of our self testing kit if you own one.
+
+      You can follow the guidelines of using this tool by following this link `);
+    });
+
+     //  agent.add(new Card({
+    //
+    //     title: `With all the information we have shared together, I would recommend you to carry out a cervical cancer test with the help of our self testing kit if you own one.
+
+	//	You can follow the guidelines of using this tool by following this link `,
+    //     imageUrl: 'https://s3-external-1.amazonaws.com/com-amazon-mas-catalog/amzn1.devportal.fileupload.e9ee260c6e5040a5aa59a2ef5c18e41f_b9d3f723-da8d-47bf-9074-8539f0552994_7b47ec9987aec186f29aca62cda86b43',
+    //     //text: `This is the body text of a card.  You can even use line\n  breaks and emoji! 💁`,
+    //     buttonText: 'Read Guidelines',
+    //     buttonUrl: 'https://cdarh.org/product.html'
+    //   })
+    // );
   }
 
 
   let intentMap = new Map();
-  intentMap.set('Default Welcome Intent', welcome);
+  intentMap.set('Transplant Fallback', refer);
 
   agent.handleRequest(intentMap);
 });
@@ -126,7 +153,7 @@ app.post('/getUser', (req, res) => {
 
   return admin.auth().verifyIdToken(token)
     .then(decodedToken => {
-      const uid = decodedToken.uid;
+      uid = decodedToken.uid;
       console.log(uid);
       console.log('Dext was here');
 
@@ -141,7 +168,7 @@ app.post('/getUser', (req, res) => {
 
 app.post('/message', async (req, res) => {
   // simulate actual db save with id and createdAt added
-  //console.log(req.body);
+  console.log(req.body);
   const chat = {
     ...req.body,
     id: shortId.generate(),
@@ -161,7 +188,7 @@ app.post('/message', async (req, res) => {
       id: shortId.generate()
     })
     res.send(chat)
-  
+
 
 })
 

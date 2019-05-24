@@ -87,15 +87,15 @@ export class HomePage {
     this._chat.sendMessage(this.message)
       .subscribe(resp => {
         this.message = '';
-       // this.sending = false;
-      //  this.tt = true;
-      //   setTimeout(() => {
-      //     console.log('Test');
-      //     this.tt = false;
-      // }, 2000);
+       this.sending = false;
+       this.tt = true;
+        setTimeout(() => {
+          console.log('Test');
+          this.tt = false;
+      }, 2000);
       }, err => {
         console.log(err)
-     //   this.sending = false;
+       this.sending = false;
       } );
   }
 

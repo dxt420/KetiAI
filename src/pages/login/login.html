@@ -1,13 +1,16 @@
 
+<ion-header>
+  <ion-navbar transparent text-center>
 
+  </ion-navbar>
+</ion-header>
 
 <ion-content padding >
 
 
-  <ion-avatar id="jj">
-    <img [src]="'assets/img/logo.png'">
-
-  </ion-avatar>
+  <div text-center>
+    <img style="height:10vh" [src]="'../assets/img/logo.png'"  />
+  </div>
 
 
 
@@ -25,9 +28,22 @@
 			</ion-item>
 
 
-		</ion-list>
+    </ion-list>
 
-		<div padding-horizontal>
+    <div  text-center>
+      <div text-center style="color:red;" class="form-error">{{loginError}}</div>
+      <ion-item style="width:74%;margin-left:13%;background: transparent;"  no-lines>
+          <button ion-button btn-success icon-left round block large padding type="submit" [disabled]="!loginForm.valid" >
+
+            Log in
+
+
+          </button>
+
+    </ion-item>
+    </div>
+
+		<!-- <div padding-horizontal>
 			<div text-center style="color:red;" class="form-error">{{loginError}}</div>
 
 			<button ion-button full type="submit" [disabled]="!loginForm.valid">Log in</button>
@@ -41,6 +57,6 @@
 					Sign up
 				</button>
 			</ion-list>
-		</div>
+		</div> -->
 	</form>
 </ion-content>

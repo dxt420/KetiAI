@@ -1,6 +1,6 @@
 <ion-content padding >
 
-<!-- <ion-slides pager="true">
+ <!-- <ion-slides pager="true">
 
   <ion-slide>
     <img [src]="'assets/img/gifs/1.gif'" />
@@ -33,12 +33,27 @@
 
 </ion-slides> -->
 
+<div text-center>
+  <img style="height:20vh" [src]="'../assets/img/logo.png'"  />
+</div>
 
-<div style="margin-top:75vh;" text-center>
+<div style="margin-top:45vh;" text-center>
   <ion-item style="width:74%;margin-left:13%;background: transparent;"  no-lines>
-      <button ion-button btn-success icon-left round block large padding (click)="goToHome()" >
+      <button ion-button btn-success icon-left round block large padding (click)="signup()" >
 
        SIGN UP FREE
+
+
+      </button>
+
+</ion-item>
+</div>
+
+<div style="margin-top:0px;" text-center>
+  <ion-item style="width:74%;margin-left:13%;background: transparent;"  no-lines>
+      <button ion-button btn-success icon-left round block large padding (click)="login()" >
+
+        Login
 
 
       </button>
