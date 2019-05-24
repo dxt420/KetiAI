@@ -182,6 +182,7 @@ app.post('/message', async (req, res) => {
   const response = await dialogFlow.send(message);
   console.log(response.data);
   console.log(response.data.result);
+  console.log(response.data.result.fulfillment);
 
 
     // trigger this update to our pushers listeners
