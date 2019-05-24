@@ -28,7 +28,9 @@
 
               </div> -->
               <div class="message received"  *ngIf="chat.type =='bot' && !chat.isMe && chat.kind == 'ZERO'">
-                {{chat.message}}
+                  {{chat.message}}
+
+
 
 
                 <!-- <ion-icon (tap)="chat.message" style="font-size:30px;padding-left:0px;" name="menu"></ion-icon> -->
@@ -43,6 +45,7 @@
               </div>
 
               <div class="message received"  *ngIf="chat.type =='bot' && !chat.isMe && chat.kind == 'ONE'">
+
                   {{chat.extra.title}}
 
 
