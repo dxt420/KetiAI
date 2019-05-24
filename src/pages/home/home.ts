@@ -51,6 +51,8 @@ export class HomePage {
         data.isMe = true;
 
       };
+      console.log(data);
+      
       // if(data.kind == 'ONE'){
 
       // };

@@ -180,12 +180,16 @@ app.post('/message', async (req, res) => {
   const message = chat.message;
 
   const response = await dialogFlow.send(message);
-  console.log(response.data);
-  console.log(response.data.result);
-  console.log(response.data.result.fulfillment);
+  //console.log(response.data);
+  //console.log(response.data.result);
+  //console.log(response.data.result.fulfillment);
+
+  console.log(response.data.result.fulfillment.messages[0]);
+  console.log(response.data.result.fulfillment.messages);
+  console.log(response.data.result.fulfillment.messages[0].type);
 
 
-  if (response.data.result.fulfillment.messages.type == 1) {
+  if (response.data.result.fulfillment.messages[0].type == 1) {
     // trigger this update to our pushers listeners
     pusher.trigger('chat-bot', 'chat', {
 
