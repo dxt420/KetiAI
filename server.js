@@ -151,7 +151,7 @@ app.post('/message', async (req, res) => {
   pusher.trigger('chat-bot', 'chat', chat)
 
   const message = chat.message;
-  try {
+
     const response = await dialogFlow.send(message);
     // trigger this update to our pushers listeners
     pusher.trigger('chat-bot', 'chat', {
@@ -161,9 +161,7 @@ app.post('/message', async (req, res) => {
       id: shortId.generate()
     })
     res.send(chat)
-  } catch (e) {
-    console.log('Catch an error: ', e)
-  }
+  
 
 })
 
