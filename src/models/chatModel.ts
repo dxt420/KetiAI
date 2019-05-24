@@ -3,5 +3,7 @@ export interface IChat {
   message : string;
   isMe : boolean;
   createdAt : string;
-  type : 'human' | 'bot'
+  type : 'human' | 'bot',
+  extra? : object,
+  kind : any
 }

@@ -27,7 +27,7 @@
                 <img style="height: 20px; width:40px" [src]="'assets/img/gifs/typing.gif'">
 
               </div> -->
-              <div class="message received"  *ngIf="chat.type =='bot' && !chat.isMe">
+              <div class="message received"  *ngIf="chat.type =='bot' && !chat.isMe && chat.kind == 'ZERO'">
                 {{chat.message}}
 
 
@@ -41,6 +41,21 @@
                 </span>
 
               </div>
+
+              <div class="message received"  *ngIf="chat.type =='bot' && !chat.isMe && chat.kind == 'ONE'">
+                  {{chat.extra.title}}
+
+
+                  <!-- <ion-icon (tap)="chat.message" style="font-size:30px;padding-left:0px;" name="menu"></ion-icon> -->
+
+
+                  <!-- playText(chat.message) -->
+                  <span class="metadata">
+                    <span  style="font-size:90%;color:#b20909" class="time"><br>{{chat.createdAt | date: 'HH:mm aaa'}}  <ion-icon (click)="playText(chat.message)" style="position:absolute;font-size:20px;right:15px;bottom:8px" name="play"  ></ion-icon></span>
+
+                  </span>
+
+                </div>
 
             </div>
           </div>

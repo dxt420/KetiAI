@@ -49,7 +49,11 @@ export class HomePage {
      this._chat.getChannel().bind('chat', data => {
       if(data.type !== 'bot'){
         data.isMe = true;
+
       };
+      // if(data.kind == 'ONE'){
+
+      // };
       this.chats.push(data);
       console.log(this.chats);
     });

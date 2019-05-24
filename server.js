@@ -185,14 +185,34 @@ app.post('/message', async (req, res) => {
   console.log(response.data.result.fulfillment);
 
 
+  if (response.data.result.fulfillment.messages.type == 1) {
+    // trigger this update to our pushers listeners
+    pusher.trigger('chat-bot', 'chat', {
+
+      message: `${response.data.result.fulfillment.speech}`,
+      extra: `${response.data.result.fulfillment.message}`,
+      type: 'bot',
+      kind: 'ONE',
+      createdAt: new Date().toISOString(),
+      id: shortId.generate()
+    })
+
+
+  }else{
     // trigger this update to our pushers listeners
     pusher.trigger('chat-bot', 'chat', {
 
       message: `${response.data.result.fulfillment.speech}`,
       type: 'bot',
+      kind: 'ZERO',
       createdAt: new Date().toISOString(),
       id: shortId.generate()
     })
+
+  }
+
+
+
     res.send(chat)
 
 

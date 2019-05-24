@@ -88,8 +88,8 @@ export class MyApp {
 
     this.pages = [
 
-      { title: 'Subscription', component: 'SubscriptiondetailsPage', icon: "cash" },
-      { title: 'Guidelines', component: 'GuidelinesPage', icon: "list" },
+      // { title: 'Subscription', component: 'SubscriptiondetailsPage', icon: "cash" },
+      // { title: 'Guidelines', component: 'GuidelinesPage', icon: "list" },
       { title: 'About', component: 'AboutPage', icon: "information" },
 
 
